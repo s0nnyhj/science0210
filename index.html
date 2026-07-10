@@ -3,116 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyeonjeong World</title>
+<title>Hyeonjeong Village</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:sans-serif;
 }
 
 body{
     height:100vh;
     overflow:hidden;
-    background:linear-gradient(#9edcff 0%,#dff7ff 45%,#8bd66d 45%,#65b453 100%);
+    background-image:url("background.jpg");
+    background-size:cover;
+    background-position:center;
+    font-family:sans-serif;
 }
 
-/* 태양 */
-.sun{
+
+/* 어두운 효과 */
+.overlay{
     position:absolute;
-    top:50px;
-    right:100px;
-    width:90px;
-    height:90px;
-    background:#ffe58a;
-    border-radius:50%;
-}
-
-/* 구름 */
-.cloud{
-    position:absolute;
-    font-size:70px;
-    animation:moveCloud 35s linear infinite;
-}
-
-.c1{
-    top:80px;
-    left:-200px;
-}
-
-.c2{
-    top:150px;
-    left:-500px;
-    animation-duration:45s;
-}
-
-@keyframes moveCloud{
-    from{left:-300px;}
-    to{left:110%;}
+    inset:0;
+    background:rgba(255,255,255,0.15);
 }
 
 
-/* 나무 */
-.tree{
-    position:absolute;
-    bottom:32%;
-    font-size:150px;
-}
-
-.tree1{left:5%;}
-.tree2{right:8%;}
-
-
-/* 쥐 집 */
-.mouse-house{
-    position:absolute;
-    bottom:28%;
-    left:15%;
-    font-size:100px;
-}
-
-
-/* 다리 */
-.bridge{
-    position:absolute;
-    bottom:25%;
-    left:45%;
-    font-size:130px;
-}
-
-
-/* 동물 */
+/* 동물 영역 */
 .animal{
     position:absolute;
-    bottom:30%;
-    font-size:55px;
-    animation:walk 12s infinite linear;
-}
-
-.rabbit{
-    animation-duration:14s;
-}
-
-.mouse{
-    animation-duration:18s;
-    animation-delay:2s;
-}
-
-.hedgehog{
-    animation-duration:20s;
-    animation-delay:4s;
+    bottom:18%;
+    font-size:45px;
+    animation:move linear infinite;
 }
 
 
-@keyframes walk{
+/* 동물 이동 */
+@keyframes move{
+
     0%{
         left:-100px;
     }
 
     50%{
-        transform:translateY(-20px);
+        transform:translateY(-25px);
     }
 
     100%{
@@ -121,81 +57,159 @@ body{
 }
 
 
+/* 각 동물 속도 */
+.a1{animation-duration:12s;}
+.a2{animation-duration:15s;}
+.a3{animation-duration:18s;}
+.a4{animation-duration:20s;}
+.a5{animation-duration:13s;}
+.a6{animation-duration:22s;}
+.a7{animation-duration:16s;}
+.a8{animation-duration:25s;}
+.a9{animation-duration:19s;}
+.a10{animation-duration:14s;}
+.a11{animation-duration:21s;}
+.a12{animation-duration:17s;}
+.a13{animation-duration:23s;}
+.a14{animation-duration:15s;}
+.a15{animation-duration:26s;}
+.a16{animation-duration:18s;}
+.a17{animation-duration:24s;}
+.a18{animation-duration:20s;}
+.a19{animation-duration:28s;}
+.a20{animation-duration:30s;}
+
+
+/* 위치 랜덤 */
+.a2{bottom:25%}
+.a3{bottom:30%}
+.a4{bottom:22%}
+.a5{bottom:35%}
+.a6{bottom:27%}
+.a7{bottom:20%}
+.a8{bottom:33%}
+.a9{bottom:24%}
+.a10{bottom:31%}
+
+
 /* 나무 팻말 */
 .sign{
     position:absolute;
-    right:15%;
-    bottom:25%;
-    background:#9b6b3d;
+    right:8%;
+    bottom:20%;
+
+    background:#8b5a2b;
     color:white;
-    padding:25px 20px;
+
+    padding:25px 30px;
+
     border-radius:8px;
-    border:8px solid #704522;
-    font-size:20px;
+
+    border:8px solid #5c3718;
+
+    font-size:22px;
     font-weight:bold;
-    box-shadow:0 10px 15px rgba(0,0,0,.2);
+
+    transform:rotate(-3deg);
+
+    box-shadow:0 15px 25px rgba(0,0,0,.3);
 }
 
 
 /* 시작 버튼 */
+
 .start{
     position:absolute;
-    bottom:40px;
+    bottom:45px;
     left:50%;
     transform:translateX(-50%);
 }
 
+
 button{
-    padding:16px 70px;
+
+    padding:18px 80px;
+
     border:none;
-    border-radius:40px;
-    background:white;
-    color:#55734b;
-    font-size:22px;
+
+    border-radius:50px;
+
+    background:#fff;
+
+    color:#59734d;
+
+    font-size:24px;
+
     font-weight:bold;
+
     cursor:pointer;
-    box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
 }
 
+
 button:hover{
-    transform:scale(1.1);
+
+    transform:scale(1.08);
+
 }
+
 
 </style>
 
 </head>
 
+
 <body>
 
-<div class="sun"></div>
 
-<div class="cloud c1">☁️</div>
-<div class="cloud c2">☁️</div>
+<div class="overlay"></div>
 
 
-<div class="tree tree1">🌳</div>
-<div class="tree tree2">🌲</div>
+
+<!-- 귀여운 동물 20마리 -->
+
+<div class="animal a1">🐰</div>
+<div class="animal a2">🐻</div>
+<div class="animal a3">🐱</div>
+<div class="animal a4">🐶</div>
+<div class="animal a5">🦊</div>
+<div class="animal a6">🐭</div>
+<div class="animal a7">🦔</div>
+<div class="animal a8">🐼</div>
+<div class="animal a9">🐨</div>
+<div class="animal a10">🐯</div>
+<div class="animal a11">🐮</div>
+<div class="animal a12">🐷</div>
+<div class="animal a13">🐸</div>
+<div class="animal a14">🐥</div>
+<div class="animal a15">🦆</div>
+<div class="animal a16">🐿️</div>
+<div class="animal a17">🦉</div>
+<div class="animal a18">🐹</div>
+<div class="animal a19">🐱</div>
+<div class="animal a20">🐰</div>
 
 
-<div class="mouse-house">🏠🐭</div>
 
-<div class="bridge">🌉</div>
-
-
-<div class="animal rabbit">🐰</div>
-<div class="animal mouse">🐭</div>
-<div class="animal hedgehog">🦔</div>
-
+<!-- 나무 팻말 -->
 
 <div class="sign">
+    🌳<br>
     주인 : 현정
 </div>
 
 
+
+<!-- START -->
+
 <div class="start">
-    <button onclick="alert('Welcome!')">
-        START
-    </button>
+
+<button onclick="alert('Welcome to Hyeonjeong Village!')">
+START
+</button>
+
 </div>
 
 
