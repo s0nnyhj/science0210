@@ -2,8 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hyeonjeong Village</title>
+<title>Hyeonjeong Field</title>
 
 <style>
 
@@ -16,142 +15,225 @@
 body{
     height:100vh;
     overflow:hidden;
-    background-image:url("background.jpg");
-    background-size:cover;
-    background-position:center;
     font-family:sans-serif;
+    background:linear-gradient(#9bdcff 0%,#dff6ff 45%,#8bd45e 45%);
 }
 
 
-/* 어두운 효과 */
-.overlay{
+/* 태양 */
+.sun{
     position:absolute;
-    inset:0;
-    background:rgba(255,255,255,0.15);
+    top:50px;
+    right:120px;
+    width:100px;
+    height:100px;
+    background:#ffe477;
+    border-radius:50%;
 }
 
 
-/* 동물 영역 */
+/* 구름 */
+
+.cloud{
+    position:absolute;
+    font-size:80px;
+    animation:cloud 40s infinite linear;
+}
+
+.cloud1{
+    top:70px;
+    left:-200px;
+}
+
+.cloud2{
+    top:170px;
+    left:-500px;
+}
+
+
+@keyframes cloud{
+
+from{
+left:-300px;
+}
+
+to{
+left:120%;
+}
+
+}
+
+
+
+/* 언덕 */
+
+.hill{
+    position:absolute;
+    bottom:35%;
+    width:100%;
+    height:220px;
+    background:#79c957;
+    border-radius:50% 50% 0 0;
+}
+
+
+
+/* 집 */
+
+.house{
+    position:absolute;
+    bottom:48%;
+    left:40%;
+    font-size:170px;
+}
+
+
+/* 나무 */
+
+.tree{
+    position:absolute;
+    bottom:40%;
+    font-size:150px;
+}
+
+.t1{
+    left:8%;
+}
+
+.t2{
+    right:10%;
+}
+
+
+
+/* 강 */
+
+.water{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:120px;
+    background:#66c8ed;
+}
+
+
+
+/* 다리 */
+
+.bridge{
+    position:absolute;
+    bottom:70px;
+    left:45%;
+    font-size:130px;
+}
+
+
+
+/* 동물 */
+
 .animal{
     position:absolute;
     bottom:18%;
-    font-size:45px;
-    animation:move linear infinite;
+    font-size:50px;
+    animation:run linear infinite;
 }
 
 
-/* 동물 이동 */
-@keyframes move{
+@keyframes run{
 
-    0%{
-        left:-100px;
-    }
+0%{
+left:-100px;
+}
 
-    50%{
-        transform:translateY(-25px);
-    }
+50%{
+transform:translateY(-20px);
+}
 
-    100%{
-        left:110%;
-    }
+100%{
+left:110%;
+}
+
 }
 
 
-/* 각 동물 속도 */
-.a1{animation-duration:12s;}
-.a2{animation-duration:15s;}
-.a3{animation-duration:18s;}
-.a4{animation-duration:20s;}
-.a5{animation-duration:13s;}
-.a6{animation-duration:22s;}
-.a7{animation-duration:16s;}
-.a8{animation-duration:25s;}
-.a9{animation-duration:19s;}
-.a10{animation-duration:14s;}
-.a11{animation-duration:21s;}
-.a12{animation-duration:17s;}
-.a13{animation-duration:23s;}
-.a14{animation-duration:15s;}
-.a15{animation-duration:26s;}
-.a16{animation-duration:18s;}
-.a17{animation-duration:24s;}
-.a18{animation-duration:20s;}
-.a19{animation-duration:28s;}
-.a20{animation-duration:30s;}
+.a1{animation-duration:10s}
+.a2{animation-duration:13s}
+.a3{animation-duration:15s}
+.a4{animation-duration:17s}
+.a5{animation-duration:19s}
+.a6{animation-duration:12s}
+.a7{animation-duration:21s}
+.a8{animation-duration:14s}
+.a9{animation-duration:18s}
+.a10{animation-duration:16s}
+.a11{animation-duration:22s}
+.a12{animation-duration:11s}
+.a13{animation-duration:20s}
+.a14{animation-duration:24s}
+.a15{animation-duration:26s}
+.a16{animation-duration:15s}
+.a17{animation-duration:23s}
+.a18{animation-duration:19s}
+.a19{animation-duration:25s}
+.a20{animation-duration:28s}
 
 
-/* 위치 랜덤 */
-.a2{bottom:25%}
-.a3{bottom:30%}
-.a4{bottom:22%}
-.a5{bottom:35%}
-.a6{bottom:27%}
-.a7{bottom:20%}
-.a8{bottom:33%}
-.a9{bottom:24%}
-.a10{bottom:31%}
 
+/* 팻말 */
 
-/* 나무 팻말 */
 .sign{
-    position:absolute;
-    right:8%;
-    bottom:20%;
 
-    background:#8b5a2b;
-    color:white;
+position:absolute;
+right:15%;
+bottom:32%;
 
-    padding:25px 30px;
+background:#8b5a2b;
+color:white;
 
-    border-radius:8px;
+padding:25px;
 
-    border:8px solid #5c3718;
+border:10px solid #5b3518;
 
-    font-size:22px;
-    font-weight:bold;
+border-radius:10px;
 
-    transform:rotate(-3deg);
+font-size:22px;
 
-    box-shadow:0 15px 25px rgba(0,0,0,.3);
+transform:rotate(-5deg);
+
 }
 
 
-/* 시작 버튼 */
+/* 버튼 */
 
 .start{
-    position:absolute;
-    bottom:45px;
-    left:50%;
-    transform:translateX(-50%);
+
+position:absolute;
+bottom:35px;
+left:50%;
+transform:translateX(-50%);
+
 }
 
 
 button{
 
-    padding:18px 80px;
+padding:18px 80px;
 
-    border:none;
+border:none;
 
-    border-radius:50px;
+border-radius:50px;
 
-    background:#fff;
+background:white;
 
-    color:#59734d;
+font-size:24px;
 
-    font-size:24px;
+color:#5b8050;
 
-    font-weight:bold;
+font-weight:bold;
 
-    cursor:pointer;
+cursor:pointer;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-
-}
-
-
-button:hover{
-
-    transform:scale(1.08);
+box-shadow:0 10px 20px #5555;
 
 }
 
@@ -164,11 +246,39 @@ button:hover{
 <body>
 
 
-<div class="overlay"></div>
+<div class="sun"></div>
+
+<div class="cloud cloud1">☁️</div>
+<div class="cloud cloud2">☁️</div>
+
+
+<div class="hill"></div>
+
+
+<div class="house">
+🏡
+</div>
+
+
+<div class="tree t1">
+🌳
+</div>
+
+<div class="tree t2">
+🌲
+</div>
+
+
+<div class="water"></div>
+
+
+<div class="bridge">
+🌉
+</div>
 
 
 
-<!-- 귀여운 동물 20마리 -->
+<!-- 동물 20마리 -->
 
 <div class="animal a1">🐰</div>
 <div class="animal a2">🐻</div>
@@ -180,36 +290,30 @@ button:hover{
 <div class="animal a8">🐼</div>
 <div class="animal a9">🐨</div>
 <div class="animal a10">🐯</div>
-<div class="animal a11">🐮</div>
-<div class="animal a12">🐷</div>
+<div class="animal a11">🐷</div>
+<div class="animal a12">🐮</div>
 <div class="animal a13">🐸</div>
 <div class="animal a14">🐥</div>
 <div class="animal a15">🦆</div>
 <div class="animal a16">🐿️</div>
 <div class="animal a17">🦉</div>
 <div class="animal a18">🐹</div>
-<div class="animal a19">🐱</div>
-<div class="animal a20">🐰</div>
+<div class="animal a19">🐰</div>
+<div class="animal a20">🐱</div>
 
 
-
-<!-- 나무 팻말 -->
 
 <div class="sign">
-    🌳<br>
-    주인 : 현정
+🌳<br>
+주인 : 현정
 </div>
 
 
 
-<!-- START -->
-
 <div class="start">
-
-<button onclick="alert('Welcome to Hyeonjeong Village!')">
+<button>
 START
 </button>
-
 </div>
 
 
