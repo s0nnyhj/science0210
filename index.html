@@ -3,122 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome</title>
+<title>Hyeonjeong World</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"Segoe UI",sans-serif;
+    font-family:sans-serif;
 }
 
 body{
-    overflow:hidden;
     height:100vh;
-    background:linear-gradient(#9fd8ff 0%, #dff6ff 55%, #9fd47b 55%, #76b95d 100%);
+    overflow:hidden;
+    background:linear-gradient(#9edcff 0%,#dff7ff 45%,#8bd66d 45%,#65b453 100%);
 }
 
-/* 하늘 */
+/* 태양 */
 .sun{
     position:absolute;
     top:50px;
-    right:90px;
+    right:100px;
     width:90px;
     height:90px;
+    background:#ffe58a;
     border-radius:50%;
-    background:#ffe88c;
-    box-shadow:0 0 40px #ffe88c;
 }
 
+/* 구름 */
 .cloud{
     position:absolute;
-    color:white;
-    font-size:80px;
-    opacity:.9;
-    animation:cloud 30s linear infinite;
+    font-size:70px;
+    animation:moveCloud 35s linear infinite;
 }
 
-.cloud:nth-child(2){
+.c1{
     top:80px;
     left:-200px;
 }
 
-.cloud:nth-child(3){
-    top:170px;
+.c2{
+    top:150px;
     left:-500px;
-    animation-duration:42s;
+    animation-duration:45s;
 }
 
-@keyframes cloud{
-    from{transform:translateX(0);}
-    to{transform:translateX(1700px);}
+@keyframes moveCloud{
+    from{left:-300px;}
+    to{left:110%;}
 }
 
-/* 들판 */
-.grass{
+
+/* 나무 */
+.tree{
     position:absolute;
-    bottom:0;
-    width:100%;
-    height:45%;
-    background:linear-gradient(#8bd36d,#5ca34c);
+    bottom:32%;
+    font-size:150px;
 }
 
-/* 꽃 */
-.flower{
+.tree1{left:5%;}
+.tree2{right:8%;}
+
+
+/* 쥐 집 */
+.mouse-house{
     position:absolute;
-    bottom:18%;
-    font-size:28px;
+    bottom:28%;
+    left:15%;
+    font-size:100px;
 }
 
-/* 뛰어다니는 동물 */
+
+/* 다리 */
+.bridge{
+    position:absolute;
+    bottom:25%;
+    left:45%;
+    font-size:130px;
+}
+
+
+/* 동물 */
 .animal{
     position:absolute;
-    bottom:22%;
-    font-size:52px;
-    animation:run linear infinite;
+    bottom:30%;
+    font-size:55px;
+    animation:walk 12s infinite linear;
 }
 
 .rabbit{
-    animation-duration:12s;
+    animation-duration:14s;
 }
 
-.cat{
-    animation-duration:15s;
+.mouse{
+    animation-duration:18s;
     animation-delay:2s;
 }
 
-.bear{
-    animation-duration:18s;
-    animation-delay:5s;
+.hedgehog{
+    animation-duration:20s;
+    animation-delay:4s;
 }
 
-.chick{
-    animation-duration:10s;
-    animation-delay:1s;
-}
 
-@keyframes run{
-    from{
+@keyframes walk{
+    0%{
         left:-100px;
-        transform:translateY(0);
     }
-    25%{
+
+    50%{
         transform:translateY(-20px);
     }
-    50%{
-        transform:translateY(0);
-    }
-    75%{
-        transform:translateY(-15px);
-    }
-    to{
+
+    100%{
         left:110%;
-        transform:translateY(0);
     }
 }
 
-/* 아래 Start 버튼 */
+
+/* 나무 팻말 */
+.sign{
+    position:absolute;
+    right:15%;
+    bottom:25%;
+    background:#9b6b3d;
+    color:white;
+    padding:25px 20px;
+    border-radius:8px;
+    border:8px solid #704522;
+    font-size:20px;
+    font-weight:bold;
+    box-shadow:0 10px 15px rgba(0,0,0,.2);
+}
+
+
+/* 시작 버튼 */
 .start{
     position:absolute;
     bottom:40px;
@@ -127,62 +146,58 @@ body{
 }
 
 button{
-    padding:16px 55px;
+    padding:16px 70px;
     border:none;
     border-radius:40px;
-    background:#ffffff;
-    color:#555;
-    font-size:20px;
+    background:white;
+    color:#55734b;
+    font-size:22px;
+    font-weight:bold;
     cursor:pointer;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-    transition:.25s;
+    box-shadow:0 10px 20px rgba(0,0,0,.2);
 }
 
 button:hover{
-    transform:scale(1.06);
+    transform:scale(1.1);
 }
 
-/* 오른쪽 아래 */
-.owner{
-    position:absolute;
-    right:30px;
-    bottom:45px;
-    color:#fff;
-    font-size:18px;
-    font-weight:bold;
-    text-shadow:1px 1px 4px rgba(0,0,0,.3);
-}
 </style>
+
 </head>
 
 <body>
 
 <div class="sun"></div>
 
-<div class="cloud">☁️</div>
-<div class="cloud">☁️</div>
+<div class="cloud c1">☁️</div>
+<div class="cloud c2">☁️</div>
 
-<div class="grass"></div>
 
-<div class="flower" style="left:8%;">🌼</div>
-<div class="flower" style="left:18%;">🌸</div>
-<div class="flower" style="left:35%;">🌷</div>
-<div class="flower" style="left:52%;">🌼</div>
-<div class="flower" style="left:70%;">🌸</div>
-<div class="flower" style="left:88%;">🌷</div>
+<div class="tree tree1">🌳</div>
+<div class="tree tree2">🌲</div>
+
+
+<div class="mouse-house">🏠🐭</div>
+
+<div class="bridge">🌉</div>
+
 
 <div class="animal rabbit">🐰</div>
-<div class="animal cat">🐱</div>
-<div class="animal bear">🐻</div>
-<div class="animal chick">🐥</div>
+<div class="animal mouse">🐭</div>
+<div class="animal hedgehog">🦔</div>
 
-<div class="start">
-    <button onclick="alert('Start! 🌼')">START</button>
-</div>
 
-<div class="owner">
+<div class="sign">
     주인 : 현정
 </div>
+
+
+<div class="start">
+    <button onclick="alert('Welcome!')">
+        START
+    </button>
+</div>
+
 
 </body>
 </html>
