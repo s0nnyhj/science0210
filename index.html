@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>현정의 동물 놀이터</title>
+<title>현정의 동물 과학 놀이터</title>
 
 <style>
 
@@ -28,7 +28,6 @@ body{
 }
 
 
-
 .grass{
 
     position:absolute;
@@ -45,15 +44,15 @@ body{
 
 
 
-/* 나무판자 */
+/* 판자 */
 
 .board{
 
     position:absolute;
 
-    top:60px;
+    top:50px;
 
-    left:50%;
+    left:35%;
 
     transform:translateX(-50%);
 
@@ -67,21 +66,19 @@ body{
 
     font-size:35px;
 
-    box-shadow:0 8px 10px #555;
-
 }
 
 
 
-/* 시작 */
+/* START */
 
 #start{
 
     position:absolute;
 
-    top:170px;
+    top:150px;
 
-    left:50%;
+    left:35%;
 
     transform:translateX(-50%);
 
@@ -96,6 +93,8 @@ body{
     font-size:30px;
 
     border-radius:30px;
+
+    cursor:pointer;
 
 }
 
@@ -128,7 +127,6 @@ transform:translateY(-60px);
 }
 
 
-/* 멈춤 */
 
 .stop *{
 
@@ -138,7 +136,77 @@ animation-play-state:paused !important;
 
 
 
-/* 돼지 로딩 */
+/* 메뉴 */
+
+#menu{
+
+    position:absolute;
+
+    right:30px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:330px;
+
+    background:rgba(255,255,255,.9);
+
+    padding:25px;
+
+    border-radius:30px;
+
+    box-shadow:0 10px 20px #555;
+
+}
+
+
+
+#menu h2{
+
+    text-align:center;
+
+    color:#4b7bec;
+
+    font-size:35px;
+
+}
+
+
+
+.menuItem{
+
+    background:#fff3cd;
+
+    margin:12px 0;
+
+    padding:15px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.menuItem:hover{
+
+    transform:scale(1.08);
+
+    background:#ffd6e8;
+
+}
+
+
+
+/* 로딩 */
 
 #loading{
 
@@ -179,15 +247,11 @@ animation-play-state:paused !important;
 @keyframes dance{
 
 from{
-
 transform:rotate(-20deg);
-
 }
 
 to{
-
 transform:rotate(20deg) translateY(-50px);
-
 }
 
 }
@@ -206,7 +270,7 @@ transform:rotate(20deg) translateY(-50px);
 
 
 
-/* 완료 화면 */
+/* 완료 */
 
 #welcome{
 
@@ -218,11 +282,11 @@ width:100vw;
 
 height:100vh;
 
+background:#e8d2ad;
+
 top:0;
 
 left:0;
-
-background:#e8d2ad;
 
 justify-content:center;
 
@@ -243,8 +307,8 @@ z-index:20;
 </head>
 
 
-
 <body>
+
 
 
 <div id="game">
@@ -264,19 +328,51 @@ START ▶
 
 
 
+<!-- 동물 -->
+
 <div class="animal" style="left:5%;bottom:20%;">🐶</div>
-<div class="animal" style="left:18%;bottom:10%;">🐱</div>
-<div class="animal" style="left:30%;bottom:25%;">🐰</div>
-<div class="animal" style="left:43%;bottom:15%;">🐼</div>
-<div class="animal" style="left:55%;bottom:30%;">🦊</div>
-<div class="animal" style="left:68%;bottom:12%;">🐸</div>
-<div class="animal" style="left:78%;bottom:25%;">🐻</div>
-<div class="animal" style="left:88%;bottom:15%;">🐷</div>
-<div class="animal" style="left:35%;bottom:5%;">🐥</div>
-<div class="animal" style="left:60%;bottom:5%;">🐨</div>
+<div class="animal" style="left:15%;bottom:10%;">🐱</div>
+<div class="animal" style="left:25%;bottom:25%;">🐰</div>
+<div class="animal" style="left:35%;bottom:15%;">🐼</div>
+<div class="animal" style="left:45%;bottom:30%;">🦊</div>
+<div class="animal" style="left:55%;bottom:12%;">🐸</div>
+<div class="animal" style="left:65%;bottom:25%;">🐻</div>
+<div class="animal" style="left:75%;bottom:15%;">🐷</div>
+<div class="animal" style="left:30%;bottom:5%;">🐥</div>
+<div class="animal" style="left:50%;bottom:5%;">🐨</div>
+
+
+
+
+<!-- 과학 메뉴 -->
+
+<div id="menu">
+
+<h2>📚 과학 메뉴</h2>
+
+
+<div class="menuItem">1. 물질의 특성</div>
+
+<div class="menuItem">2. 지권의 변화</div>
+
+<div class="menuItem">3. 빛과 파동</div>
+
+<div class="menuItem">4. 물질의 구성</div>
+
+<div class="menuItem">5. 식물과 에너지</div>
+
+<div class="menuItem">6. 동물과 에너지</div>
+
+<div class="menuItem">7. 전기와 자기</div>
+
+<div class="menuItem">8. 별과 우주</div>
 
 
 </div>
+
+
+</div>
+
 
 
 
@@ -298,7 +394,8 @@ START ▶
 
 
 
-<!-- 완료 -->
+
+<!-- 완료 화면 -->
 
 <div id="welcome">
 
@@ -311,11 +408,14 @@ START ▶
 
 
 
+
+
 <audio id="music" autoplay loop>
 
 <source src="cute-music.mp3" type="audio/mp3">
 
 </audio>
+
 
 
 
@@ -335,47 +435,31 @@ const music=document.getElementById("music");
 
 
 
-// 자동 재생 시도
+window.onload=()=>{
 
-window.addEventListener("load",()=>{
+music.volume=.5;
 
-music.volume=0.5;
+music.play().catch(()=>{});
 
-music.play().catch(()=>{
-
-});
-
-});
+};
 
 
-
-// START
 
 start.onclick=()=>{
 
 
-// 음악 재생 재시도
-
 music.play();
 
-
-// 배경 멈춤
 
 game.classList.add("stop");
 
 
-// 버튼 제거
-
 start.style.display="none";
 
-
-// 돼지 등장
 
 loading.style.display="flex";
 
 
-
-// 3초 후 입장
 
 setTimeout(()=>{
 
