@@ -2,304 +2,134 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>현정 동물 놀이터</title>
+<title>현정의 동물 놀이터</title>
 
 <style>
-
-body{
-    margin:0;
-    overflow:hidden;
-    font-family:sans-serif;
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: "Comic Sans MS", sans-serif;
+    background: #8ed081;
 }
 
-
-/* 잔디 놀이터 */
-#park{
-    width:100vw;
-    height:100vh;
+#game {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
     background:
-    linear-gradient(
-    skyblue 35%,
-    #62c454 35%
-    );
-    position:relative;
+      linear-gradient(#9be7ff 0 35%, #7bd35b 35% 100%);
 }
 
-
-/* START 버튼 */
-#start{
+/* 잔디 느낌 */
+.grass {
     position:absolute;
-    top:40px;
-    left:50%;
-    transform:translateX(-50%);
-
-    padding:15px 50px;
-    font-size:35px;
-
-    border:none;
-    border-radius:40px;
-
-    background:#ff91c8;
-    color:white;
-
-    cursor:pointer;
+    bottom:0;
+    width:100%;
+    height:65%;
+    background:#74c850;
 }
-
-
-/* 나무 */
-#tree{
-    position:absolute;
-    right:150px;
-    bottom:180px;
-    font-size:160px;
-}
-
 
 /* 나무판자 */
-#sign{
+.board {
     position:absolute;
-    right:120px;
-    bottom:100px;
-
-    background:#8b4513;
-    color:white;
-
-    padding:25px;
-
-    font-size:30px;
-
-    border:6px solid #5a2d0c;
-
-    transform:rotate(-5deg);
-}
-
-
-/* 뛰는 동물 */
-#animal{
-
-    position:absolute;
-
-    left:200px;
-    bottom:100px;
-
-    font-size:150px;
-
-    animation:jump 1.5s infinite;
-
-}
-
-
-@keyframes jump{
-
-50%{
-    transform:translateY(-80px);
-}
-
-}
-
-
-/* 동물 시점 화면 */
-
-#inside{
-
-    display:none;
-
-    width:100vw;
-    height:100vh;
-
-    background:#74d66c;
-
-    text-align:center;
-
-    position:relative;
-
-}
-
-
-#player{
-
-    position:absolute;
-
-    font-size:170px;
-
+    top:60px;
     left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
+    transform:translateX(-50%);
+    background:#b8793b;
+    color:white;
+    padding:20px 60px;
+    border-radius:15px;
+    font-size:35px;
+    box-shadow:0 8px 10px #555;
 }
 
-
-h1{
-    padding-top:50px;
+/* 동물 */
+.animal {
+    position:absolute;
+    font-size:100px;
+    animation: move 3s infinite alternate;
 }
 
+@keyframes move {
+    from { transform:translateY(0); }
+    to { transform:translateY(-25px); }
+}
 
+/* 버튼 */
+#start {
+    position:absolute;
+    top:170px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:15px 50px;
+    font-size:30px;
+    border:none;
+    border-radius:30px;
+    background:#ff7eb3;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 5px 10px #777;
+}
+
+#start:hover {
+    background:#ff4f95;
+}
 </style>
 
 </head>
 
-
 <body>
 
+<div id="game">
 
-<div id="park">
+<div class="grass"></div>
 
-
-<button id="start">
-START
-</button>
-
-
-<div id="tree">
-🌳
+<div class="board">
+    주인: 현정
 </div>
 
-
-<div id="sign">
-주인: 현정
-</div>
+<button id="start">START ▶</button>
 
 
-<div id="animal">
-🐰
-</div>
-
-
-</div>
-
-
-
-<div id="inside">
-
-<h1>
-🐾 동물의 몸속으로 들어왔다!
-</h1>
-
-<p>
-방향키로 움직여보세요
-</p>
-
-
-<div id="player">
-🐰
-</div>
-
+<div class="animal" style="left:5%; bottom:20%;">🐶</div>
+<div class="animal" style="left:18%; bottom:10%;">🐱</div>
+<div class="animal" style="left:30%; bottom:25%;">🐰</div>
+<div class="animal" style="left:43%; bottom:15%;">🐼</div>
+<div class="animal" style="left:55%; bottom:30%;">🦊</div>
+<div class="animal" style="left:68%; bottom:12%;">🐸</div>
+<div class="animal" style="left:78%; bottom:25%;">🐻</div>
+<div class="animal" style="left:88%; bottom:15%;">🐷</div>
+<div class="animal" style="left:35%; bottom:5%;">🐥</div>
+<div class="animal" style="left:60%; bottom:5%;">🐨</div>
 
 </div>
 
 
+<!-- 귀여운 무료 효과음/음악 파일 넣기 -->
+<audio id="music" loop>
+    <source src="cute-music.mp3" type="audio/mp3">
+</audio>
 
 
 <script>
 
+const button = document.getElementById("start");
+const music = document.getElementById("music");
 
-const start =
-document.getElementById("start");
+button.onclick = () => {
 
+    music.play();
 
-const animals=[
+    document.querySelectorAll(".animal").forEach(animal=>{
+        animal.style.animationDuration =
+        (Math.random()*2+1)+"s";
+    });
 
-"🐰",
-"🐶",
-"🐱",
-"🦊",
-"🐼",
-"🐯"
-
-];
-
-
-
-start.onclick=function(){
-
-
-let randomAnimal =
-animals[
-Math.floor(
-Math.random()*animals.length
-)
-];
-
-
-
-document.getElementById("animal")
-.innerHTML=randomAnimal;
-
-
-
-setTimeout(()=>{
-
-
-document.getElementById("park")
-.style.display="none";
-
-
-document.getElementById("inside")
-.style.display="block";
-
-
-document.getElementById("player")
-.innerHTML=randomAnimal;
-
-
-
-},1500);
-
-
-
+    button.innerHTML="🐾 PLAYING!";
+    button.style.background="#6bdc6b";
 };
 
-
-
-
-// 동물 움직이기
-
-let x=50;
-let y=50;
-
-
-document.addEventListener(
-"keydown",
-
-function(e){
-
-
-if(e.key==="ArrowRight"){
-x+=5;
-}
-
-
-if(e.key==="ArrowLeft"){
-x-=5;
-}
-
-
-if(e.key==="ArrowUp"){
-y-=5;
-}
-
-
-if(e.key==="ArrowDown"){
-y+=5;
-}
-
-
-
-document.getElementById("player")
-.style.left=x+"%";
-
-
-document.getElementById("player")
-.style.top=y+"%";
-
-
-
-});
-
-
 </script>
-
 
 </body>
 </html>
