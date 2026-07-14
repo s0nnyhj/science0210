@@ -5,23 +5,54 @@
 <title>현정의 동물 놀이터</title>
 
 <style>
-body {
-    margin: 0;
-    overflow: hidden;
-    font-family: "Comic Sans MS", sans-serif;
-    background: #8ed081;
+
+body{
+    margin:0;
+    overflow:hidden;
+    font-family:"Comic Sans MS", sans-serif;
 }
 
-#game {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+
+/* 로딩 화면 */
+#loading{
+    width:100vw;
+    height:100vh;
+    background:#ffd6e8;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-size:35px;
+}
+
+.pig{
+    font-size:150px;
+    animation:dance 0.5s infinite alternate;
+}
+
+@keyframes dance{
+    from{
+        transform:rotate(-15deg) translateY(0);
+    }
+    to{
+        transform:rotate(15deg) translateY(-40px);
+    }
+}
+
+
+/* 게임 화면 */
+
+#game{
+    display:none;
+    width:100vw;
+    height:100vh;
+    position:relative;
     background:
-      linear-gradient(#9be7ff 0 35%, #7bd35b 35% 100%);
+    linear-gradient(#9be7ff 0 35%,#7bd35b 35% 100%);
 }
 
-/* 잔디 느낌 */
-.grass {
+
+.grass{
     position:absolute;
     bottom:0;
     width:100%;
@@ -29,13 +60,15 @@ body {
     background:#74c850;
 }
 
+
 /* 나무판자 */
-.board {
+
+.board{
     position:absolute;
     top:60px;
     left:50%;
     transform:translateX(-50%);
-    background:#b8793b;
+    background:#ad7135;
     color:white;
     padding:20px 60px;
     border-radius:15px;
@@ -43,93 +76,108 @@ body {
     box-shadow:0 8px 10px #555;
 }
 
+
+
 /* 동물 */
-.animal {
+
+.animal{
     position:absolute;
     font-size:100px;
-    animation: move 3s infinite alternate;
+    animation:bounce 0.8s infinite alternate;
 }
 
-@keyframes move {
-    from { transform:translateY(0); }
-    to { transform:translateY(-25px); }
+
+@keyframes bounce{
+
+    from{
+        transform:translateY(0) scale(1);
+    }
+
+    to{
+        transform:translateY(-60px) scale(1.1);
+    }
+
 }
 
-/* 버튼 */
-#start {
-    position:absolute;
-    top:170px;
-    left:50%;
-    transform:translateX(-50%);
-    padding:15px 50px;
-    font-size:30px;
-    border:none;
-    border-radius:30px;
-    background:#ff7eb3;
-    color:white;
-    cursor:pointer;
-    box-shadow:0 5px 10px #777;
-}
 
-#start:hover {
-    background:#ff4f95;
-}
+
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- 로딩 -->
+
+<div id="loading">
+
+<div class="pig">🐷</div>
+
+<div>
+춤추는 돼지가 준비중... 🐽
+</div>
+
+</div>
+
+
+
+<!-- 메인 -->
 
 <div id="game">
 
 <div class="grass"></div>
 
+
 <div class="board">
-    주인: 현정
-</div>
-
-<button id="start">START ▶</button>
-
-
-<div class="animal" style="left:5%; bottom:20%;">🐶</div>
-<div class="animal" style="left:18%; bottom:10%;">🐱</div>
-<div class="animal" style="left:30%; bottom:25%;">🐰</div>
-<div class="animal" style="left:43%; bottom:15%;">🐼</div>
-<div class="animal" style="left:55%; bottom:30%;">🦊</div>
-<div class="animal" style="left:68%; bottom:12%;">🐸</div>
-<div class="animal" style="left:78%; bottom:25%;">🐻</div>
-<div class="animal" style="left:88%; bottom:15%;">🐷</div>
-<div class="animal" style="left:35%; bottom:5%;">🐥</div>
-<div class="animal" style="left:60%; bottom:5%;">🐨</div>
-
+주인: 현정
 </div>
 
 
-<!-- 귀여운 무료 효과음/음악 파일 넣기 -->
-<audio id="music" loop>
-    <source src="cute-music.mp3" type="audio/mp3">
+
+<div class="animal" style="left:5%;bottom:20%;">🐶</div>
+<div class="animal" style="left:18%;bottom:10%;">🐱</div>
+<div class="animal" style="left:30%;bottom:25%;">🐰</div>
+<div class="animal" style="left:43%;bottom:15%;">🐼</div>
+<div class="animal" style="left:55%;bottom:30%;">🦊</div>
+<div class="animal" style="left:68%;bottom:12%;">🐸</div>
+<div class="animal" style="left:78%;bottom:25%;">🐻</div>
+<div class="animal" style="left:88%;bottom:15%;">🐷</div>
+<div class="animal" style="left:35%;bottom:5%;">🐥</div>
+<div class="animal" style="left:60%;bottom:5%;">🐨</div>
+
+
+</div>
+
+
+
+<!-- 배경음악 -->
+
+<audio autoplay loop>
+<source src="cute-music.mp3" type="audio/mp3">
 </audio>
+
 
 
 <script>
 
-const button = document.getElementById("start");
-const music = document.getElementById("music");
 
-button.onclick = () => {
+// 3초 동안 돼지 로딩 후 입장
 
-    music.play();
+setTimeout(()=>{
 
-    document.querySelectorAll(".animal").forEach(animal=>{
-        animal.style.animationDuration =
-        (Math.random()*2+1)+"s";
-    });
+document.getElementById("loading").style.display="none";
 
-    button.innerHTML="🐾 PLAYING!";
-    button.style.background="#6bdc6b";
-};
+document.getElementById("game").style.display="block";
+
+
+},3000);
+
+
 
 </script>
+
 
 </body>
 </html>
