@@ -2,302 +2,195 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Hyeonjeong Field</title>
+<title>현정의 동물 놀이터</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-<style>
+<body>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+<audio id="bgm" loop>
+    <source src="cute.mp3" type="audio/mpeg">
+</audio>
 
-body{
-height:100vh;
-overflow:hidden;
-font-family:sans-serif;
-background:linear-gradient(
-#9bdcff 0%,
-#dff6ff 45%,
-#8bd45e 45%
-);
-}
+<div id="game">
 
+    <div class="sign">
+        <h2>주인: 현정</h2>
+    </div>
 
-/* 태양 */
-.sun{
-position:absolute;
-top:50px;
-right:100px;
-width:90px;
-height:90px;
-background:#ffe477;
-border-radius:50%;
-}
+    <button id="start">START</button>
+
+    <div id="animal">
+        🐰
+    </div>
+
+    <div id="message">
+        동물이 뛰어놀고 있어요!
+    </div>
+
+</div>
 
 
-/* 구름 */
-.cloud{
-position:absolute;
-font-size:70px;
-animation:cloud 35s linear infinite;
-}
+<div id="view">
+    <h1>🐾 동물의 몸속으로 들어왔다!</h1>
+    <p>방향키로 움직여보세요</p>
+    <div id="player">🐰</div>
+</div>
 
-@keyframes cloud{
-from{left:-200px;}
-to{left:110%;}
-}
 
-.cloud{
-top:80px;
+<script src="script.js"></script>
+
+</body>
+</html>body{
+    margin:0;
+    overflow:hidden;
+    font-family:Arial;
 }
 
 
-/* 언덕 */
-.hill{
-position:absolute;
-bottom:35%;
-width:100%;
-height:220px;
-background:#79c957;
-border-radius:50% 50% 0 0;
+#game{
+    width:100vw;
+    height:100vh;
+    background:
+    linear-gradient(#87ceeb 0%,
+    #87ceeb 40%,
+    #65b84a 40%);
+    position:relative;
 }
 
 
-/* 집 */
-.house{
-position:absolute;
-left:40%;
-bottom:45%;
-transition:3s;
-}
-
-.home{
-font-size:160px;
-}
-
-.door{
-position:absolute;
-bottom:15px;
-left:70px;
-font-size:45px;
-opacity:0;
-transition:1s;
-}
-
-
-.open .door{
-opacity:1;
-}
-
-
-.zoom{
-animation:enter 3s forwards;
-}
-
-
-@keyframes enter{
-
-0%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(3);
-}
-
-100%{
-transform:scale(7);
-opacity:0;
-}
-
-}
-
-
-/* 나무 */
-.tree{
-position:absolute;
-bottom:38%;
-left:10%;
-font-size:130px;
-}
-
-
-/* 물 */
-.water{
-position:absolute;
-bottom:0;
-height:100px;
-width:100%;
-background:#66c8ed;
-}
-
-
-/* 동물 */
-.animal{
-position:absolute;
-bottom:18%;
-font-size:45px;
-animation:move linear infinite;
-}
-
-@keyframes move{
-
-from{
-left:-100px;
-}
-
-to{
-left:110%;
-}
-
-}
-
-.a1{animation-duration:10s;}
-.a2{animation-duration:14s;}
-.a3{animation-duration:17s;}
-.a4{animation-duration:12s;}
-.a5{animation-duration:20s;}
-
-
-/* 팻말 */
 .sign{
-position:absolute;
-right:10%;
-bottom:30%;
-background:#8b5a2b;
-color:white;
-padding:20px;
-border:6px solid #5b3518;
-font-size:20px;
-}
-
-
-/* 버튼 */
-.start{
-position:absolute;
-bottom:30px;
-left:50%;
-transform:translateX(-50%);
+    position:absolute;
+    right:80px;
+    top:250px;
+    width:180px;
+    height:100px;
+    background:#b87333;
+    border:8px solid #704214;
+    transform:rotate(-5deg);
+    text-align:center;
+    color:white;
 }
 
 
 button{
-padding:15px 70px;
-border:none;
-border-radius:40px;
-background:white;
-font-size:24px;
-font-weight:bold;
-color:#5b8050;
-cursor:pointer;
+    position:absolute;
+    top:40px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:30px;
+    padding:15px 50px;
+    border-radius:30px;
+    border:none;
+    background:#ff8ac6;
+    color:white;
+    cursor:pointer;
 }
 
 
-</style>
-
-</head>
-
-
-<body>
-
-
-<div class="sun"></div>
-
-<div class="cloud">
-☁️
-</div>
+#animal{
+    position:absolute;
+    font-size:150px;
+    bottom:100px;
+    left:20%;
+    animation:jump 2s infinite;
+}
 
 
-<div class="hill"></div>
+@keyframes jump{
 
-
-<div class="house" id="house">
-
-<div class="home">
-🏡
-</div>
-
-<div class="door">
-🚪
-</div>
-
-</div>
-
-
-
-<div class="tree">
-🌳
-</div>
-
-
-<div class="water"></div>
-
-
-
-<!-- 동물 5마리 -->
-
-<div class="animal a1">🐰</div>
-<div class="animal a2">🐻</div>
-<div class="animal a3">🐱</div>
-<div class="animal a4">🦊</div>
-<div class="animal a5">🐶</div>
-
-
-
-<div class="sign">
-
-🌳<br>
-주인 : 현정
-
-</div>
-
-
-
-<div class="start">
-
-<button onclick="startGame()">
-START
-</button>
-
-</div>
-
-
-
-<script>
-
-function startGame(){
-
-let house=document.getElementById("house");
-
-house.classList.add("open");
-
-
-setTimeout(()=>{
-
-document.body.classList.add("zoom");
-
-},1000);
-
+0%{transform:translateY(0);}
+50%{transform:translateY(-80px);}
+100%{transform:translateY(0);}
 
 }
 
-</script>
+
+#message{
+    position:absolute;
+    bottom:30px;
+    width:100%;
+    text-align:center;
+    font-size:30px;
+    color:white;
+}
 
 
-</body>
-</html>
-<div class="house" id="house">
 
-    <div class="home">
-        🏡
-    </div>
-
-    <div class="door" id="door">
-        🚪
-    </div>
-
-</div>
+#view{
+    display:none;
+    width:100vw;
+    height:100vh;
+    background:#7ed957;
+    text-align:center;
+}
 
 
-<
+#player{
+    font-size:180px;
+    position:absolute;
+    top:50%;
+    left:50%;
+}const start=document.getElementById("start");
+const bgm=document.getElementById("bgm");
+
+const animals=[
+"🐰",
+"🐶",
+"🐱",
+"🐼",
+"🦊"
+];
+
+
+start.onclick=function(){
+
+    bgm.play();
+
+    let choice=
+    animals[Math.floor(Math.random()*animals.length)];
+
+    document.getElementById("animal").innerHTML=choice;
+
+    setTimeout(()=>{
+
+        document.getElementById("game").style.display="none";
+        document.getElementById("view").style.display="block";
+
+        document.getElementById("player").innerHTML=choice;
+
+    },2000);
+
+}
+
+
+
+let x=50;
+let y=50;
+
+document.addEventListener("keydown",function(e){
+
+let player=document.getElementById("player");
+
+if(e.key=="ArrowRight"){
+    x+=20;
+}
+
+if(e.key=="ArrowLeft"){
+    x-=20;
+}
+
+if(e.key=="ArrowUp"){
+    y-=20;
+}
+
+if(e.key=="ArrowDown"){
+    y+=20;
+}
+
+
+player.style.left=x+"%";
+player.style.top=y+"%";
+
+
+});
