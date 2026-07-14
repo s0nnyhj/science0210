@@ -2,195 +2,304 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>현정의 동물 놀이터</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<title>현정 동물 놀이터</title>
 
-<body>
+<style>
 
-<audio id="bgm" loop>
-    <source src="cute.mp3" type="audio/mpeg">
-</audio>
-
-<div id="game">
-
-    <div class="sign">
-        <h2>주인: 현정</h2>
-    </div>
-
-    <button id="start">START</button>
-
-    <div id="animal">
-        🐰
-    </div>
-
-    <div id="message">
-        동물이 뛰어놀고 있어요!
-    </div>
-
-</div>
-
-
-<div id="view">
-    <h1>🐾 동물의 몸속으로 들어왔다!</h1>
-    <p>방향키로 움직여보세요</p>
-    <div id="player">🐰</div>
-</div>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>body{
+body{
     margin:0;
     overflow:hidden;
-    font-family:Arial;
+    font-family:sans-serif;
 }
 
 
-#game{
+/* 잔디 놀이터 */
+#park{
     width:100vw;
     height:100vh;
     background:
-    linear-gradient(#87ceeb 0%,
-    #87ceeb 40%,
-    #65b84a 40%);
+    linear-gradient(
+    skyblue 35%,
+    #62c454 35%
+    );
     position:relative;
 }
 
 
-.sign{
-    position:absolute;
-    right:80px;
-    top:250px;
-    width:180px;
-    height:100px;
-    background:#b87333;
-    border:8px solid #704214;
-    transform:rotate(-5deg);
-    text-align:center;
-    color:white;
-}
-
-
-button{
+/* START 버튼 */
+#start{
     position:absolute;
     top:40px;
     left:50%;
     transform:translateX(-50%);
-    font-size:30px;
+
     padding:15px 50px;
-    border-radius:30px;
+    font-size:35px;
+
     border:none;
-    background:#ff8ac6;
+    border-radius:40px;
+
+    background:#ff91c8;
     color:white;
+
     cursor:pointer;
 }
 
 
-#animal{
+/* 나무 */
+#tree{
     position:absolute;
-    font-size:150px;
+    right:150px;
+    bottom:180px;
+    font-size:160px;
+}
+
+
+/* 나무판자 */
+#sign{
+    position:absolute;
+    right:120px;
     bottom:100px;
-    left:20%;
-    animation:jump 2s infinite;
+
+    background:#8b4513;
+    color:white;
+
+    padding:25px;
+
+    font-size:30px;
+
+    border:6px solid #5a2d0c;
+
+    transform:rotate(-5deg);
+}
+
+
+/* 뛰는 동물 */
+#animal{
+
+    position:absolute;
+
+    left:200px;
+    bottom:100px;
+
+    font-size:150px;
+
+    animation:jump 1.5s infinite;
+
 }
 
 
 @keyframes jump{
 
-0%{transform:translateY(0);}
-50%{transform:translateY(-80px);}
-100%{transform:translateY(0);}
+50%{
+    transform:translateY(-80px);
+}
 
 }
 
 
-#message{
-    position:absolute;
-    bottom:30px;
-    width:100%;
-    text-align:center;
-    font-size:30px;
-    color:white;
-}
+/* 동물 시점 화면 */
 
+#inside{
 
-
-#view{
     display:none;
+
     width:100vw;
     height:100vh;
-    background:#7ed957;
+
+    background:#74d66c;
+
     text-align:center;
+
+    position:relative;
+
 }
 
 
 #player{
-    font-size:180px;
+
     position:absolute;
-    top:50%;
+
+    font-size:170px;
+
     left:50%;
-}const start=document.getElementById("start");
-const bgm=document.getElementById("bgm");
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+}
+
+
+h1{
+    padding-top:50px;
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="park">
+
+
+<button id="start">
+START
+</button>
+
+
+<div id="tree">
+🌳
+</div>
+
+
+<div id="sign">
+주인: 현정
+</div>
+
+
+<div id="animal">
+🐰
+</div>
+
+
+</div>
+
+
+
+<div id="inside">
+
+<h1>
+🐾 동물의 몸속으로 들어왔다!
+</h1>
+
+<p>
+방향키로 움직여보세요
+</p>
+
+
+<div id="player">
+🐰
+</div>
+
+
+</div>
+
+
+
+
+<script>
+
+
+const start =
+document.getElementById("start");
+
 
 const animals=[
+
 "🐰",
 "🐶",
 "🐱",
+"🦊",
 "🐼",
-"🦊"
+"🐯"
+
 ];
+
 
 
 start.onclick=function(){
 
-    bgm.play();
 
-    let choice=
-    animals[Math.floor(Math.random()*animals.length)];
-
-    document.getElementById("animal").innerHTML=choice;
-
-    setTimeout(()=>{
-
-        document.getElementById("game").style.display="none";
-        document.getElementById("view").style.display="block";
-
-        document.getElementById("player").innerHTML=choice;
-
-    },2000);
-
-}
+let randomAnimal =
+animals[
+Math.floor(
+Math.random()*animals.length
+)
+];
 
 
+
+document.getElementById("animal")
+.innerHTML=randomAnimal;
+
+
+
+setTimeout(()=>{
+
+
+document.getElementById("park")
+.style.display="none";
+
+
+document.getElementById("inside")
+.style.display="block";
+
+
+document.getElementById("player")
+.innerHTML=randomAnimal;
+
+
+
+},1500);
+
+
+
+};
+
+
+
+
+// 동물 움직이기
 
 let x=50;
 let y=50;
 
-document.addEventListener("keydown",function(e){
 
-let player=document.getElementById("player");
+document.addEventListener(
+"keydown",
 
-if(e.key=="ArrowRight"){
-    x+=20;
-}
+function(e){
 
-if(e.key=="ArrowLeft"){
-    x-=20;
-}
 
-if(e.key=="ArrowUp"){
-    y-=20;
-}
-
-if(e.key=="ArrowDown"){
-    y+=20;
+if(e.key==="ArrowRight"){
+x+=5;
 }
 
 
-player.style.left=x+"%";
-player.style.top=y+"%";
+if(e.key==="ArrowLeft"){
+x-=5;
+}
+
+
+if(e.key==="ArrowUp"){
+y-=5;
+}
+
+
+if(e.key==="ArrowDown"){
+y+=5;
+}
+
+
+
+document.getElementById("player")
+.style.left=x+"%";
+
+
+document.getElementById("player")
+.style.top=y+"%";
+
 
 
 });
+
+
+</script>
+
+
+</body>
+</html>
