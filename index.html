@@ -13,42 +13,13 @@ body{
 }
 
 
-/* 로딩 화면 */
-#loading{
-    width:100vw;
-    height:100vh;
-    background:#ffd6e8;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    font-size:35px;
-}
-
-.pig{
-    font-size:150px;
-    animation:dance 0.5s infinite alternate;
-}
-
-@keyframes dance{
-    from{
-        transform:rotate(-15deg) translateY(0);
-    }
-    to{
-        transform:rotate(15deg) translateY(-40px);
-    }
-}
-
-
-/* 게임 화면 */
+/* 메인 화면 */
 
 #game{
-    display:none;
     width:100vw;
     height:100vh;
     position:relative;
-    background:
-    linear-gradient(#9be7ff 0 35%,#7bd35b 35% 100%);
+    background:linear-gradient(#9be7ff 0 35%,#7bd35b 35% 100%);
 }
 
 
@@ -61,19 +32,56 @@ body{
 }
 
 
+
 /* 나무판자 */
 
 .board{
+
     position:absolute;
     top:60px;
     left:50%;
     transform:translateX(-50%);
+
     background:#ad7135;
     color:white;
+
     padding:20px 60px;
+
     border-radius:15px;
+
     font-size:35px;
+
     box-shadow:0 8px 10px #555;
+
+}
+
+
+
+/* START */
+
+#start{
+
+    position:absolute;
+
+    top:170px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#ff7eb3;
+
+    color:white;
+
+    border:none;
+
+    padding:15px 50px;
+
+    font-size:30px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
 }
 
 
@@ -81,24 +89,92 @@ body{
 /* 동물 */
 
 .animal{
+
     position:absolute;
+
     font-size:100px;
-    animation:bounce 0.8s infinite alternate;
+
+    animation:bounce .8s infinite alternate;
+
 }
+
 
 
 @keyframes bounce{
 
-    from{
-        transform:translateY(0) scale(1);
-    }
+from{
+    transform:translateY(0);
+}
 
-    to{
-        transform:translateY(-60px) scale(1.1);
-    }
+to{
+    transform:translateY(-60px);
+}
 
 }
 
+
+
+/* 로딩 화면 */
+
+#loading{
+
+    display:none;
+
+    position:absolute;
+
+    width:100vw;
+
+    height:100vh;
+
+    background:#ffd6e8;
+
+    top:0;
+
+    left:0;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    font-size:35px;
+
+    z-index:10;
+
+}
+
+
+
+.pig{
+
+    font-size:150px;
+
+    animation:dance .5s infinite alternate;
+
+}
+
+
+
+@keyframes dance{
+
+from{
+    transform:rotate(-20deg);
+}
+
+to{
+    transform:rotate(20deg) translateY(-40px);
+}
+
+}
+
+
+
+.stop *{
+
+    animation-play-state:paused !important;
+
+}
 
 
 </style>
@@ -109,23 +185,8 @@ body{
 <body>
 
 
-<!-- 로딩 -->
-
-<div id="loading">
-
-<div class="pig">🐷</div>
-
-<div>
-춤추는 돼지가 준비중... 🐽
-</div>
-
-</div>
-
-
-
-<!-- 메인 -->
-
 <div id="game">
+
 
 <div class="grass"></div>
 
@@ -133,6 +194,11 @@ body{
 <div class="board">
 주인: 현정
 </div>
+
+
+<button id="start">
+START ▶
+</button>
 
 
 
@@ -148,32 +214,105 @@ body{
 <div class="animal" style="left:60%;bottom:5%;">🐨</div>
 
 
+
 </div>
 
 
 
-<!-- 배경음악 -->
+<!-- 돼지 로딩 -->
 
-<audio autoplay loop>
+<div id="loading">
+
+<div class="pig">
+🐷
+</div>
+
+<div>
+현정의 동물원 입장중... 🐽
+</div>
+
+</div>
+
+
+
+<audio id="music" autoplay loop>
+
 <source src="cute-music.mp3" type="audio/mp3">
+
 </audio>
+
 
 
 
 <script>
 
 
-// 3초 동안 돼지 로딩 후 입장
+const start=document.getElementById("start");
+
+const game=document.getElementById("game");
+
+const loading=document.getElementById("loading");
+
+const music=document.getElementById("music");
+
+
+
+window.onload=()=>{
+
+music.play().catch(()=>{
+
+console.log("브라우저가 자동재생을 막았습니다.");
+
+});
+
+};
+
+
+
+start.onclick=()=>{
+
+
+// 음악 재생 재시도
+
+music.play();
+
+
+// 배경 멈춤
+
+game.classList.add("stop");
+
+
+// 버튼 숨김
+
+start.style.display="none";
+
+
+// 돼지 로딩
+
+loading.style.display="flex";
+
+
+
+// 3초 뒤 다음 화면
 
 setTimeout(()=>{
 
-document.getElementById("loading").style.display="none";
+loading.innerHTML=
+`
+<div style="font-size:120px">
+🎉
+</div>
 
-document.getElementById("game").style.display="block";
-
+<div>
+환영해요 현정님!
+</div>
+`;
 
 },3000);
 
+
+
+};
 
 
 </script>
