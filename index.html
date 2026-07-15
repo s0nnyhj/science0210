@@ -607,6 +607,170 @@ transform:rotate(20deg) translateY(-50px);
 
 }
 
+
+/* 친구(동물) 선택 영역 */
+
+.friendBox{
+
+    margin-top:26px;
+
+    padding-top:22px;
+
+    border-top:2px dashed #ffd6e8;
+
+    width:100%;
+
+}
+
+.friendLabel{
+
+    color:#999;
+
+    font-size:15px;
+
+    margin-bottom:12px;
+
+}
+
+.friendBtn{
+
+    background:linear-gradient(#ffe07a,#ffc94a);
+
+    border:none;
+
+    color:#7a4d00;
+
+    font-weight:bold;
+
+    font-size:20px;
+
+    padding:14px 30px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 0 #e0a800, 0 10px 15px rgba(0,0,0,.2);
+
+    transition:.15s;
+
+}
+
+.friendBtn:hover{
+
+    transform:scale(1.06);
+
+}
+
+.friendBtn:active{
+
+    transform:translateY(4px);
+
+    box-shadow:0 2px 0 #e0a800;
+
+}
+
+
+/* 놀러가기 화면 */
+
+#playScreen{
+
+    display:none;
+
+    position:absolute;
+
+    width:100vw;
+
+    height:100vh;
+
+    top:0;
+
+    left:0;
+
+    z-index:30;
+
+    background:linear-gradient(#bfe9ff 0 40%,#8fd66a 40% 100%);
+
+    box-sizing:border-box;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+}
+
+#playScreen .bigAnimal{
+
+    font-size:160px;
+
+    animation:bounce .8s infinite alternate;
+
+    filter:drop-shadow(0 10px 5px rgba(0,0,0,.25));
+
+}
+
+#playScreen .playTitle{
+
+    background:rgba(255,255,255,.9);
+
+    color:#4b7bec;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    padding:14px 40px;
+
+    border-radius:25px;
+
+    margin-top:10px;
+
+}
+
+#playScreen .playNote{
+
+    margin-top:18px;
+
+    color:#fff;
+
+    font-size:18px;
+
+    text-shadow:1px 1px 3px rgba(0,0,0,.3);
+
+}
+
+#playBackBtn{
+
+    margin-top:30px;
+
+    background:#fff;
+
+    color:#4b7bec;
+
+    border:none;
+
+    padding:12px 35px;
+
+    font-size:17px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    box-shadow:0 6px 15px rgba(0,0,0,.2);
+
+}
+
+#playBackBtn:hover{
+
+    background:#eef4ff;
+
+}
+
 #backBtn{
 
     margin-top:28px;
@@ -827,10 +991,28 @@ START ▶
 <div class="name"></div>
 <div class="desc"></div>
 
+<div class="friendBox">
+<div class="friendLabel">누구랑 같이 알아볼까요?</div>
+<button id="friendBtn" class="friendBtn"></button>
+</div>
+
 <button id="backBtn">◀ 목록으로 돌아가기</button>
 
 </div>
 
+
+</div>
+
+
+<!-- 동물이랑 놀러가기 화면 -->
+
+<div id="playScreen">
+
+<div class="bigAnimal"></div>
+<div class="playTitle"></div>
+<div class="playNote">여기에 놀이 내용을 곧 채워넣을 거예요! 🎈</div>
+
+<button id="playBackBtn">◀ 단원으로 돌아가기</button>
 
 </div>
 
@@ -853,7 +1035,35 @@ const unitScreen=document.getElementById("unitScreen");
 const unitGrid=document.getElementById("unitGrid");
 const unitDetail=document.getElementById("unitDetail");
 const backBtn=document.getElementById("backBtn");
+const friendBtn=document.getElementById("friendBtn");
+const playScreen=document.getElementById("playScreen");
+const playBackBtn=document.getElementById("playBackBtn");
 const music=document.getElementById("music");
+
+
+/* 첫 화면에 있는 동물 친구들 */
+
+const ANIMALS=[
+
+{emoji:"🐶",name:"멍멍이"},
+{emoji:"🐱",name:"야옹이"},
+{emoji:"🐰",name:"토실이"},
+{emoji:"🐼",name:"판다"},
+{emoji:"🦊",name:"여우"},
+{emoji:"🐸",name:"개굴이"},
+{emoji:"🐻",name:"곰돌이"},
+{emoji:"🐷",name:"꿀꿀이"},
+{emoji:"🐥",name:"삐약이"},
+{emoji:"🐨",name:"코알라"},
+{emoji:"🦁",name:"사자"},
+{emoji:"🐧",name:"펭귄"}
+
+];
+
+
+let currentUnit=null;
+
+let currentFriend=null;
 
 
 window.onload=()=>{
@@ -905,11 +1115,43 @@ unitDetail.querySelector(".name").textContent=card.dataset.name;
 
 unitDetail.querySelector(".desc").textContent=card.dataset.desc;
 
+currentUnit={icon:card.dataset.icon,name:card.dataset.name};
+
+currentFriend=ANIMALS[Math.floor(Math.random()*ANIMALS.length)];
+
+friendBtn.textContent=currentFriend.emoji+" "+currentFriend.name+"이랑 놀러가기!";
+
 unitDetail.style.display="flex";
 
 };
 
 });
+
+
+/* 놀러가기 버튼 -> 다음 화면으로 */
+
+friendBtn.onclick=()=>{
+
+unitDetail.style.display="none";
+
+playScreen.querySelector(".bigAnimal").textContent=currentFriend.emoji;
+
+playScreen.querySelector(".playTitle").textContent=currentUnit.icon+" "+currentUnit.name+" - "+currentFriend.name+"랑 놀아요";
+
+playScreen.style.display="flex";
+
+};
+
+
+/* 놀러가기 화면에서 단원으로 돌아가기 */
+
+playBackBtn.onclick=()=>{
+
+playScreen.style.display="none";
+
+unitDetail.style.display="flex";
+
+};
 
 
 /* 목록으로 돌아가기 */
