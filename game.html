@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>들판 게임</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#8fd36b;
+    text-align:center;
+}
+
+/* 모든 화면 숨김 */
+.screen{
+    display:none;
+    padding-top:80px;
+}
+
+/* 처음 화면만 보이기 */
+#startScreen{
+    display:block;
+}
+
+button{
+    padding:15px 35px;
+    font-size:20px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.menu{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.card{
+    width:180px;
+    height:120px;
+    background:white;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:22px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+    background:#ffe066;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 첫 화면 -->
+<div id="startScreen" class="screen">
+    <h1>🌿 들판 게임</h1>
+    <button onclick="showScreen('fieldScreen')">START</button>
+</div>
+
+<!-- 들판 화면 -->
+<div id="fieldScreen" class="screen">
+    <h1>🌿 들판</h1>
+
+    <div class="menu">
+        <div class="card" onclick="showScreen('grassDetail')">🌱 들판 탐험</div>
+        <div class="card" onclick="showScreen('villageDetail')">🏠 마을</div>
+        <div class="card" onclick="showScreen('bagDetail')">🎒 인벤토리</div>
+    </div>
+
+    <br>
+    <button onclick="showScreen('startScreen')">메인으로</button>
+</div>
+
+<!-- 들판 탐험 -->
+<div id="grassDetail" class="screen">
+    <h1>🌱 들판 탐험</h1>
+    <p>넓은 들판입니다.</p>
+    <p>🌼 꽃을 채집하거나 🐰 동물을 만날 수 있습니다.</p>
+
+    <button onclick="showScreen('fieldScreen')">← 돌아가기</button>
+</div>
+
+<!-- 마을 -->
+<div id="villageDetail" class="screen">
+    <h1>🏠 마을</h1>
+    <p>상점과 주민들이 있는 장소입니다.</p>
+
+    <button onclick="showScreen('fieldScreen')">← 돌아가기</button>
+</div>
+
+<!-- 인벤토리 -->
+<div id="bagDetail" class="screen">
+    <h1>🎒 인벤토리</h1>
+    <p>아이템이 여기에 표시됩니다.</p>
+
+    <button onclick="showScreen('fieldScreen')">← 돌아가기</button>
+</div>
+
+<script>
+function showScreen(id){
+    const screens = document.querySelectorAll(".screen");
+
+    screens.forEach(screen=>{
+        screen.style.display="none";
+    });
+
+    document.getElementById(id).style.display="block";
+}
+</script>
+
+</body>
+</html>
