@@ -743,6 +743,77 @@ transform:rotate(20deg) translateY(-50px);
 
 }
 
+
+/* 활동 바로가기 목록 */
+
+#linksBox{
+
+    margin-top:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    width:min(90vw,420px);
+
+}
+
+.linkRow{
+
+    background:rgba(255,255,255,.95);
+
+    border-radius:20px;
+
+    padding:12px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    box-shadow:0 6px 14px rgba(0,0,0,.15);
+
+}
+
+.linkRow span{
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    color:#444;
+
+}
+
+.goBtn{
+
+    background:linear-gradient(#79d0ff,#4bb4ff);
+
+    border:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    padding:8px 18px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+}
+
+.goBtn:hover{
+
+    background:linear-gradient(#5cc2ff,#2ea3ff);
+
+}
+
 #playBackBtn{
 
     margin-top:30px;
@@ -933,49 +1004,49 @@ START ▶
 
 <div id="unitGrid">
 
-<div class="unitCard" data-icon="🧪" data-name="물질의 특성" data-num="1" data-desc="물질마다 가지는 고유한 성질을 알아보고, 우리 주변의 다양한 물질을 비교해봐요.">
+<div class="unitCard" data-icon="🧪" data-name="물질의 특성" data-num="1" data-desc="물질마다 가지는 고유한 성질을 알아보고, 우리 주변의 다양한 물질을 비교해봐요." data-friend="🐶" data-friendname="멍멍이">
 <span class="icon">🧪</span>
 <div class="num">UNIT 1</div>
 <div class="name">물질의 특성</div>
 </div>
 
-<div class="unitCard" data-icon="🌋" data-name="지권의 변화" data-num="2" data-desc="지진과 화산, 그리고 땅의 모습이 어떻게 변해왔는지 함께 탐험해봐요.">
+<div class="unitCard" data-icon="🌋" data-name="지권의 변화" data-num="2" data-desc="지진과 화산, 그리고 땅의 모습이 어떻게 변해왔는지 함께 탐험해봐요." data-friend="🐷" data-friendname="꿀꿀이">
 <span class="icon">🌋</span>
 <div class="num">UNIT 2</div>
 <div class="name">지권의 변화</div>
 </div>
 
-<div class="unitCard" data-icon="🌈" data-name="빛과 파동" data-num="3" data-desc="빛이 어떻게 퍼지고 꺾이는지, 무지개는 왜 생기는지 알아봐요.">
+<div class="unitCard" data-icon="🌈" data-name="빛과 파동" data-num="3" data-desc="빛이 어떻게 퍼지고 꺾이는지, 무지개는 왜 생기는지 알아봐요." data-friend="🐰" data-friendname="토실이">
 <span class="icon">🌈</span>
 <div class="num">UNIT 3</div>
 <div class="name">빛과 파동</div>
 </div>
 
-<div class="unitCard" data-icon="⚛️" data-name="물질의 구성" data-num="4" data-desc="눈에 보이지 않는 아주 작은 알갱이, 원소와 원자에 대해 배워봐요.">
+<div class="unitCard" data-icon="⚛️" data-name="물질의 구성" data-num="4" data-desc="눈에 보이지 않는 아주 작은 알갱이, 원소와 원자에 대해 배워봐요." data-friend="🐼" data-friendname="판다">
 <span class="icon">⚛️</span>
 <div class="num">UNIT 4</div>
 <div class="name">물질의 구성</div>
 </div>
 
-<div class="unitCard" data-icon="🌱" data-name="식물과 에너지" data-num="5" data-desc="식물이 햇빛을 받아 어떻게 스스로 에너지를 만드는지 알아봐요.">
+<div class="unitCard" data-icon="🌱" data-name="식물과 에너지" data-num="5" data-desc="식물이 햇빛을 받아 어떻게 스스로 에너지를 만드는지 알아봐요." data-friend="🐸" data-friendname="개굴이">
 <span class="icon">🌱</span>
 <div class="num">UNIT 5</div>
 <div class="name">식물과 에너지</div>
 </div>
 
-<div class="unitCard" data-icon="🐾" data-name="동물과 에너지" data-num="6" data-desc="동물들이 먹이를 통해 에너지를 얻고 살아가는 방법을 살펴봐요.">
+<div class="unitCard" data-icon="🐾" data-name="동물과 에너지" data-num="6" data-desc="동물들이 먹이를 통해 에너지를 얻고 살아가는 방법을 살펴봐요." data-friend="🦊" data-friendname="여우">
 <span class="icon">🐾</span>
 <div class="num">UNIT 6</div>
 <div class="name">동물과 에너지</div>
 </div>
 
-<div class="unitCard" data-icon="⚡" data-name="전기와 자기" data-num="7" data-desc="전기가 흐르는 원리와 자석의 신비한 힘에 대해 알아봐요.">
+<div class="unitCard" data-icon="⚡" data-name="전기와 자기" data-num="7" data-desc="전기가 흐르는 원리와 자석의 신비한 힘에 대해 알아봐요." data-friend="🦁" data-friendname="사자">
 <span class="icon">⚡</span>
 <div class="num">UNIT 7</div>
 <div class="name">전기와 자기</div>
 </div>
 
-<div class="unitCard" data-icon="🌌" data-name="별과 우주" data-num="8" data-desc="밤하늘의 별과 태양계, 우리가 사는 우주에 대해 알아봐요.">
+<div class="unitCard" data-icon="🌌" data-name="별과 우주" data-num="8" data-desc="밤하늘의 별과 태양계, 우리가 사는 우주에 대해 알아봐요." data-friend="🐧" data-friendname="펭귄">
 <span class="icon">🌌</span>
 <div class="num">UNIT 8</div>
 <div class="name">별과 우주</div>
@@ -1012,6 +1083,8 @@ START ▶
 <div class="playTitle"></div>
 <div class="playNote">여기에 놀이 내용을 곧 채워넣을 거예요! 🎈</div>
 
+<div id="linksBox"></div>
+
 <button id="playBackBtn">◀ 단원으로 돌아가기</button>
 
 </div>
@@ -1041,29 +1114,78 @@ const playBackBtn=document.getElementById("playBackBtn");
 const music=document.getElementById("music");
 
 
-/* 첫 화면에 있는 동물 친구들 */
-
-const ANIMALS=[
-
-{emoji:"🐶",name:"멍멍이"},
-{emoji:"🐱",name:"야옹이"},
-{emoji:"🐰",name:"토실이"},
-{emoji:"🐼",name:"판다"},
-{emoji:"🦊",name:"여우"},
-{emoji:"🐸",name:"개굴이"},
-{emoji:"🐻",name:"곰돌이"},
-{emoji:"🐷",name:"꿀꿀이"},
-{emoji:"🐥",name:"삐약이"},
-{emoji:"🐨",name:"코알라"},
-{emoji:"🦁",name:"사자"},
-{emoji:"🐧",name:"펭귄"}
-
-];
-
+/* 첫 화면에 있는 동물 친구들 (코알라 제외 8마리, 단원별 고정) */
 
 let currentUnit=null;
 
 let currentFriend=null;
+
+
+/* 단원별 바로가기 활동 목록 (필요할 때마다 여기에 추가) */
+
+const UNIT_LINKS={
+
+"물질의 구성":[
+
+{title:"원소기호 규칙", url:"https://sciencej1.cafe24.com/html5/sci2/elementsymbol.html"}
+
+]
+
+};
+
+
+/* 물방울 소리 (Web Audio API로 직접 생성) */
+
+let audioCtx=null;
+
+function playDrop(){
+
+try{
+
+if(!audioCtx){
+
+audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+
+}
+
+const o=audioCtx.createOscillator();
+
+const g=audioCtx.createGain();
+
+o.type="sine";
+
+o.frequency.setValueAtTime(750,audioCtx.currentTime);
+
+o.frequency.exponentialRampToValueAtTime(180,audioCtx.currentTime+.18);
+
+g.gain.setValueAtTime(.35,audioCtx.currentTime);
+
+g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.18);
+
+o.connect(g);
+
+g.connect(audioCtx.destination);
+
+o.start();
+
+o.stop(audioCtx.currentTime+.18);
+
+}catch(e){}
+
+}
+
+
+/* 버튼, 카드, 메뉴 등 뭘 누르든 물방울 소리 재생 */
+
+document.body.addEventListener("click",e=>{
+
+if(e.target.closest("button, .unitCard, .menuItem")){
+
+playDrop();
+
+}
+
+});
 
 
 window.onload=()=>{
@@ -1117,9 +1239,9 @@ unitDetail.querySelector(".desc").textContent=card.dataset.desc;
 
 currentUnit={icon:card.dataset.icon,name:card.dataset.name};
 
-currentFriend=ANIMALS[Math.floor(Math.random()*ANIMALS.length)];
+currentFriend={emoji:card.dataset.friend,name:card.dataset.friendname};
 
-friendBtn.textContent=currentFriend.emoji+" "+currentFriend.name+"이랑 놀러가기!";
+friendBtn.textContent=currentFriend.emoji+" "+currentFriend.name+"랑놀기";
 
 unitDetail.style.display="flex";
 
@@ -1138,9 +1260,55 @@ playScreen.querySelector(".bigAnimal").textContent=currentFriend.emoji;
 
 playScreen.querySelector(".playTitle").textContent=currentUnit.icon+" "+currentUnit.name+" - "+currentFriend.name+"랑 놀아요";
 
+
+const links=UNIT_LINKS[currentUnit.name];
+
+const linksBox=document.getElementById("linksBox");
+
+const playNote=playScreen.querySelector(".playNote");
+
+
+if(links&&links.length>0){
+
+linksBox.innerHTML=links.map((l,i)=>
+
+"<div class='linkRow'><span>"+(i+1)+". "+l.title+"</span><button class='goBtn' data-url='"+l.url+"'>바로가기</button></div>"
+
+).join("");
+
+linksBox.style.display="flex";
+
+playNote.style.display="none";
+
+}else{
+
+linksBox.innerHTML="";
+
+linksBox.style.display="none";
+
+playNote.style.display="block";
+
+}
+
+
 playScreen.style.display="flex";
 
 };
+
+
+/* 바로가기 버튼 -> 새 탭에서 사이트 열기 */
+
+document.getElementById("linksBox").addEventListener("click",e=>{
+
+const btn=e.target.closest(".goBtn");
+
+if(btn){
+
+window.open(btn.dataset.url,"_blank");
+
+}
+
+});
 
 
 /* 놀러가기 화면에서 단원으로 돌아가기 */
