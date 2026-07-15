@@ -42,32 +42,97 @@ body{
 
 }
 
+.grass::before{
+
+    content:"🌼 🌸 🌼 🌸 🌼 🌸 🌼 🌸 🌼 🌸 🌼 🌸 🌼 🌸 🌼";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    font-size:22px;
+
+    letter-spacing:30px;
+
+    opacity:.7;
+
+}
 
 
-/* 판자 */
+/* 구름 */
+
+.cloud{
+
+    position:absolute;
+
+    font-size:60px;
+
+    opacity:.9;
+
+    animation:drift 25s linear infinite;
+
+}
+
+@keyframes drift{
+
+from{ transform:translateX(-10vw); }
+
+to{ transform:translateX(110vw); }
+
+}
+
+
+/* 판자 (주인 이름표) */
 
 .board{
 
     position:absolute;
 
-    top:50px;
+    top:35px;
 
     left:35%;
 
     transform:translateX(-50%);
 
-    background:#ad7135;
+    background:linear-gradient(#c98d51,#a5652a);
 
-    color:white;
+    color:#fff8ec;
 
-    padding:20px 60px;
+    padding:16px 55px;
 
-    border-radius:15px;
+    border-radius:20px;
 
-    font-size:35px;
+    font-size:30px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    border:5px solid #7c4a1e;
+
+    box-shadow:0 8px 0 #6b3d16, 0 12px 15px rgba(0,0,0,.25);
 
 }
 
+.board .sub{
+
+    display:block;
+
+    font-size:15px;
+
+    font-weight:normal;
+
+    margin-top:4px;
+
+    letter-spacing:2px;
+
+    opacity:.9;
+
+}
 
 
 /* START */
@@ -76,56 +141,100 @@ body{
 
     position:absolute;
 
-    top:150px;
+    top:165px;
 
     left:35%;
 
     transform:translateX(-50%);
 
-    background:#ff7eb3;
+    background:linear-gradient(#ff9dc4,#ff6fa5);
 
     color:white;
 
     border:none;
 
-    padding:15px 50px;
+    padding:16px 55px;
 
-    font-size:30px;
+    font-size:28px;
 
-    border-radius:30px;
+    font-weight:bold;
+
+    border-radius:35px;
 
     cursor:pointer;
 
+    box-shadow:0 6px 0 #d94f85, 0 10px 15px rgba(0,0,0,.25);
+
+    transition:.15s;
+
 }
 
+#start:hover{
+
+    transform:translateX(-50%) scale(1.06);
+
+}
+
+#start:active{
+
+    transform:translateX(-50%) translateY(4px);
+
+    box-shadow:0 2px 0 #d94f85;
+
+}
 
 
 /* 동물 */
 
-.animal{
+.animalWrap{
 
     position:absolute;
 
-    font-size:100px;
-
-    animation:bounce .8s infinite alternate;
+    text-align:center;
 
 }
 
+.animal{
 
+    font-size:90px;
+
+    animation:bounce .8s infinite alternate;
+
+    filter:drop-shadow(0 10px 5px rgba(0,0,0,.25));
+
+}
+
+.animalWrap .tag{
+
+    display:inline-block;
+
+    margin-top:-10px;
+
+    background:rgba(255,255,255,.85);
+
+    border-radius:12px;
+
+    padding:2px 12px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#555;
+
+}
 
 @keyframes bounce{
 
 from{
-transform:translateY(0);
+transform:translateY(0) rotate(-3deg);
 }
 
 to{
-transform:translateY(-60px);
+transform:translateY(-55px) rotate(3deg);
 }
 
 }
-
 
 
 .stop *{
@@ -135,8 +244,7 @@ animation-play-state:paused !important;
 }
 
 
-
-/* 메뉴 */
+/* 메뉴 (시작 전 사이드 메뉴) */
 
 #menu{
 
@@ -148,18 +256,17 @@ animation-play-state:paused !important;
 
     transform:translateY(-50%);
 
-    width:330px;
+    width:340px;
 
-    background:rgba(255,255,255,.9);
+    background:rgba(255,255,255,.92);
 
-    padding:25px;
+    padding:22px;
 
     border-radius:30px;
 
-    box-shadow:0 10px 20px #555;
+    box-shadow:0 10px 20px rgba(0,0,0,.3);
 
 }
-
 
 
 #menu h2{
@@ -168,42 +275,74 @@ animation-play-state:paused !important;
 
     color:#4b7bec;
 
-    font-size:35px;
+    font-size:32px;
+
+    margin:5px 0 18px;
 
 }
-
 
 
 .menuItem{
 
     background:#fff3cd;
 
-    margin:12px 0;
+    margin:10px 0;
 
-    padding:15px;
+    padding:13px 16px;
 
     border-radius:20px;
 
-    text-align:center;
-
-    font-size:22px;
+    font-size:19px;
 
     cursor:pointer;
 
-    transition:.3s;
+    transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border:2px solid transparent;
 
 }
 
+.menuItem .num{
 
+    background:#ff9dc4;
+
+    color:white;
+
+    font-weight:bold;
+
+    width:26px;
+
+    height:26px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:14px;
+
+    flex-shrink:0;
+
+}
 
 .menuItem:hover{
 
-    transform:scale(1.08);
+    transform:scale(1.06);
 
     background:#ffd6e8;
 
-}
+    border-color:#ff9dc4;
 
+}
 
 
 /* 로딩 */
@@ -230,9 +369,9 @@ animation-play-state:paused !important;
 
     z-index:10;
 
+    background:linear-gradient(#9be7ff,#7bd35b);
+
 }
-
-
 
 .pig{
 
@@ -241,8 +380,6 @@ animation-play-state:paused !important;
     animation:dance .5s infinite alternate;
 
 }
-
-
 
 @keyframes dance{
 
@@ -256,54 +393,247 @@ transform:rotate(20deg) translateY(-50px);
 
 }
 
-
-
 #loadingText{
 
     color:white;
 
-    font-size:45px;
+    font-size:40px;
 
-    text-shadow:3px 3px 5px #555;
+    text-shadow:3px 3px 5px rgba(0,0,0,.35);
 
-}
-
-
-
-/* 완료 */
-
-#welcome{
-
-display:none;
-
-position:absolute;
-
-width:100vw;
-
-height:100vh;
-
-background:#e8d2ad;
-
-top:0;
-
-left:0;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-font-size:50px;
-
-z-index:20;
+    margin-top:10px;
 
 }
 
 
+/* 단원 선택 화면 */
+
+#unitScreen{
+
+    display:none;
+
+    position:absolute;
+
+    width:100vw;
+
+    height:100vh;
+
+    top:0;
+
+    left:0;
+
+    z-index:20;
+
+    background:linear-gradient(#dff3ff,#e8f8dc);
+
+    box-sizing:border-box;
+
+    padding:40px;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    overflow:auto;
+
+}
+
+#unitScreen h1{
+
+    color:#4b7bec;
+
+    font-size:36px;
+
+    margin:0 0 8px;
+
+    text-align:center;
+
+}
+
+#unitScreen .hint{
+
+    color:#777;
+
+    font-size:17px;
+
+    margin-bottom:25px;
+
+}
+
+#unitGrid{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:22px;
+
+    max-width:1000px;
+
+}
+
+.unitCard{
+
+    background:white;
+
+    width:200px;
+
+    padding:22px 16px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    box-shadow:0 8px 0 #ddd, 0 12px 18px rgba(0,0,0,.15);
+
+    transition:.25s;
+
+    border:3px solid transparent;
+
+}
+
+.unitCard:hover{
+
+    transform:translateY(-6px) scale(1.05);
+
+    border-color:#ff9dc4;
+
+}
+
+.unitCard .icon{
+
+    font-size:55px;
+
+    display:block;
+
+    margin-bottom:10px;
+
+}
+
+.unitCard .num{
+
+    color:#ff6fa5;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+}
+
+.unitCard .name{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#444;
+
+    margin-top:4px;
+
+}
+
+.unitCard.hide{
+
+    display:none;
+
+}
+
+
+/* 선택된 단원 상세 */
+
+#unitDetail{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:white;
+
+    border-radius:30px;
+
+    padding:50px 60px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.2);
+
+    max-width:600px;
+
+}
+
+#unitDetail .icon{
+
+    font-size:100px;
+
+}
+
+#unitDetail .num{
+
+    color:#ff6fa5;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    margin-top:10px;
+
+}
+
+#unitDetail .name{
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#4b7bec;
+
+    margin:8px 0 15px;
+
+}
+
+#unitDetail .desc{
+
+    font-size:18px;
+
+    color:#555;
+
+    line-height:1.6;
+
+}
+
+#backBtn{
+
+    margin-top:28px;
+
+    background:#4b7bec;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 35px;
+
+    font-size:17px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+}
+
+#backBtn:hover{
+
+    background:#3a63c8;
+
+}
 
 </style>
-
 </head>
 
 
@@ -316,9 +646,13 @@ z-index:20;
 
 <div class="grass"></div>
 
+<div class="cloud" style="top:40px;left:10%;">☁️</div>
+<div class="cloud" style="top:90px;left:60%;animation-delay:-10s;">☁️</div>
+
 
 <div class="board">
-주인: 현정
+🐾 주인: 현정 🐾
+<span class="sub">ANIMAL SCIENCE PARK</span>
 </div>
 
 
@@ -330,16 +664,65 @@ START ▶
 
 <!-- 동물 -->
 
-<div class="animal" style="left:5%;bottom:20%;">🐶</div>
-<div class="animal" style="left:15%;bottom:10%;">🐱</div>
-<div class="animal" style="left:25%;bottom:25%;">🐰</div>
-<div class="animal" style="left:35%;bottom:15%;">🐼</div>
-<div class="animal" style="left:45%;bottom:30%;">🦊</div>
-<div class="animal" style="left:55%;bottom:12%;">🐸</div>
-<div class="animal" style="left:65%;bottom:25%;">🐻</div>
-<div class="animal" style="left:75%;bottom:15%;">🐷</div>
-<div class="animal" style="left:30%;bottom:5%;">🐥</div>
-<div class="animal" style="left:50%;bottom:5%;">🐨</div>
+<div class="animalWrap" style="left:5%;bottom:20%;">
+<div class="animal">🐶</div>
+<div class="tag">멍멍이</div>
+</div>
+
+<div class="animalWrap" style="left:15%;bottom:10%;">
+<div class="animal">🐱</div>
+<div class="tag">야옹이</div>
+</div>
+
+<div class="animalWrap" style="left:25%;bottom:25%;">
+<div class="animal">🐰</div>
+<div class="tag">토실이</div>
+</div>
+
+<div class="animalWrap" style="left:35%;bottom:15%;">
+<div class="animal">🐼</div>
+<div class="tag">판다</div>
+</div>
+
+<div class="animalWrap" style="left:45%;bottom:30%;">
+<div class="animal">🦊</div>
+<div class="tag">여우</div>
+</div>
+
+<div class="animalWrap" style="left:55%;bottom:12%;">
+<div class="animal">🐸</div>
+<div class="tag">개굴이</div>
+</div>
+
+<div class="animalWrap" style="left:65%;bottom:25%;">
+<div class="animal">🐻</div>
+<div class="tag">곰돌이</div>
+</div>
+
+<div class="animalWrap" style="left:75%;bottom:15%;">
+<div class="animal">🐷</div>
+<div class="tag">꿀꿀이</div>
+</div>
+
+<div class="animalWrap" style="left:30%;bottom:5%;">
+<div class="animal">🐥</div>
+<div class="tag">삐약이</div>
+</div>
+
+<div class="animalWrap" style="left:50%;bottom:5%;">
+<div class="animal">🐨</div>
+<div class="tag">코알라</div>
+</div>
+
+<div class="animalWrap" style="left:8%;bottom:38%;">
+<div class="animal">🦁</div>
+<div class="tag">사자</div>
+</div>
+
+<div class="animalWrap" style="left:70%;bottom:38%;">
+<div class="animal">🐧</div>
+<div class="tag">펭귄</div>
+</div>
 
 
 
@@ -350,30 +733,19 @@ START ▶
 
 <h2>📚 과학 메뉴</h2>
 
-
-<div class="menuItem">1. 물질의 특성</div>
-
-<div class="menuItem">2. 지권의 변화</div>
-
-<div class="menuItem">3. 빛과 파동</div>
-
-<div class="menuItem">4. 물질의 구성</div>
-
-<div class="menuItem">5. 식물과 에너지</div>
-
-<div class="menuItem">6. 동물과 에너지</div>
-
-<div class="menuItem">7. 전기와 자기</div>
-
-<div class="menuItem">8. 별과 우주</div>
-
+<div class="menuItem"><span class="num">1</span> 🧪 물질의 특성</div>
+<div class="menuItem"><span class="num">2</span> 🌋 지권의 변화</div>
+<div class="menuItem"><span class="num">3</span> 🌈 빛과 파동</div>
+<div class="menuItem"><span class="num">4</span> ⚛️ 물질의 구성</div>
+<div class="menuItem"><span class="num">5</span> 🌱 식물과 에너지</div>
+<div class="menuItem"><span class="num">6</span> 🐾 동물과 에너지</div>
+<div class="menuItem"><span class="num">7</span> ⚡ 전기와 자기</div>
+<div class="menuItem"><span class="num">8</span> 🌌 별과 우주</div>
 
 </div>
 
 
 </div>
-
-
 
 
 
@@ -381,58 +753,107 @@ START ▶
 
 <div id="loading">
 
-<div class="pig">
-🐷
-</div>
-
-<div id="loadingText">
-로딩중
-</div>
+<div class="pig">🐷</div>
+<div id="loadingText">로딩중...</div>
 
 </div>
 
 
 
+<!-- 단원 선택 화면 -->
 
+<div id="unitScreen">
 
-<!-- 완료 화면 -->
+<h1>🎉 현정의 동물원 입장 완료!</h1>
+<div class="hint">배우고 싶은 단원을 눌러보세요</div>
 
-<div id="welcome">
+<div id="unitGrid">
 
-🎉<br>
+<div class="unitCard" data-icon="🧪" data-name="물질의 특성" data-num="1" data-desc="물질마다 가지는 고유한 성질을 알아보고, 우리 주변의 다양한 물질을 비교해봐요.">
+<span class="icon">🧪</span>
+<div class="num">UNIT 1</div>
+<div class="name">물질의 특성</div>
+</div>
 
-현정의 동물원 입장 완료!
+<div class="unitCard" data-icon="🌋" data-name="지권의 변화" data-num="2" data-desc="지진과 화산, 그리고 땅의 모습이 어떻게 변해왔는지 함께 탐험해봐요.">
+<span class="icon">🌋</span>
+<div class="num">UNIT 2</div>
+<div class="name">지권의 변화</div>
+</div>
+
+<div class="unitCard" data-icon="🌈" data-name="빛과 파동" data-num="3" data-desc="빛이 어떻게 퍼지고 꺾이는지, 무지개는 왜 생기는지 알아봐요.">
+<span class="icon">🌈</span>
+<div class="num">UNIT 3</div>
+<div class="name">빛과 파동</div>
+</div>
+
+<div class="unitCard" data-icon="⚛️" data-name="물질의 구성" data-num="4" data-desc="눈에 보이지 않는 아주 작은 알갱이, 원소와 원자에 대해 배워봐요.">
+<span class="icon">⚛️</span>
+<div class="num">UNIT 4</div>
+<div class="name">물질의 구성</div>
+</div>
+
+<div class="unitCard" data-icon="🌱" data-name="식물과 에너지" data-num="5" data-desc="식물이 햇빛을 받아 어떻게 스스로 에너지를 만드는지 알아봐요.">
+<span class="icon">🌱</span>
+<div class="num">UNIT 5</div>
+<div class="name">식물과 에너지</div>
+</div>
+
+<div class="unitCard" data-icon="🐾" data-name="동물과 에너지" data-num="6" data-desc="동물들이 먹이를 통해 에너지를 얻고 살아가는 방법을 살펴봐요.">
+<span class="icon">🐾</span>
+<div class="num">UNIT 6</div>
+<div class="name">동물과 에너지</div>
+</div>
+
+<div class="unitCard" data-icon="⚡" data-name="전기와 자기" data-num="7" data-desc="전기가 흐르는 원리와 자석의 신비한 힘에 대해 알아봐요.">
+<span class="icon">⚡</span>
+<div class="num">UNIT 7</div>
+<div class="name">전기와 자기</div>
+</div>
+
+<div class="unitCard" data-icon="🌌" data-name="별과 우주" data-num="8" data-desc="밤하늘의 별과 태양계, 우리가 사는 우주에 대해 알아봐요.">
+<span class="icon">🌌</span>
+<div class="num">UNIT 8</div>
+<div class="name">별과 우주</div>
+</div>
 
 </div>
 
 
+<div id="unitDetail">
+
+<span class="icon"></span>
+<div class="num"></div>
+<div class="name"></div>
+<div class="desc"></div>
+
+<button id="backBtn">◀ 목록으로 돌아가기</button>
+
+</div>
+
+
+</div>
 
 
 
 
 <audio id="music" autoplay loop>
-
 <source src="cute-music.mp3" type="audio/mp3">
-
 </audio>
-
 
 
 
 
 <script>
 
-
 const start=document.getElementById("start");
-
 const game=document.getElementById("game");
-
 const loading=document.getElementById("loading");
-
-const welcome=document.getElementById("welcome");
-
+const unitScreen=document.getElementById("unitScreen");
+const unitGrid=document.getElementById("unitGrid");
+const unitDetail=document.getElementById("unitDetail");
+const backBtn=document.getElementById("backBtn");
 const music=document.getElementById("music");
-
 
 
 window.onload=()=>{
@@ -444,41 +865,62 @@ music.play().catch(()=>{});
 };
 
 
-
 start.onclick=()=>{
-
 
 music.play();
 
-
 game.classList.add("stop");
 
-
 start.style.display="none";
-
 
 loading.style.display="flex";
 
 
-
 setTimeout(()=>{
-
 
 loading.style.display="none";
 
-
 game.style.display="none";
 
-
-welcome.style.display="flex";
-
+unitScreen.style.display="flex";
 
 },3000);
 
+};
 
+
+/* 카드 클릭 -> 나머지 숨기고 클릭한 단원만 표시 */
+
+document.querySelectorAll(".unitCard").forEach(card=>{
+
+card.onclick=()=>{
+
+document.querySelectorAll(".unitCard").forEach(c=>c.classList.add("hide"));
+
+unitDetail.querySelector(".icon").textContent=card.dataset.icon;
+
+unitDetail.querySelector(".num").textContent="UNIT "+card.dataset.num;
+
+unitDetail.querySelector(".name").textContent=card.dataset.name;
+
+unitDetail.querySelector(".desc").textContent=card.dataset.desc;
+
+unitDetail.style.display="flex";
 
 };
 
+});
+
+
+/* 목록으로 돌아가기 */
+
+backBtn.onclick=()=>{
+
+unitDetail.style.display="none";
+
+document.querySelectorAll(".unitCard").forEach(c=>c.classList.remove("hide"));
+
+};
 
 </script>
 
