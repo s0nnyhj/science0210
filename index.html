@@ -1134,7 +1134,7 @@ const UNIT_LINKS={
 };
 
 
-/* 물방울 소리 (Web Audio API로 직접 생성) */
+/* 클릭 소리 (아이폰 키보드 타이핑 느낌의 짧은 '톡' 소리) */
 
 let audioCtx=null;
 
@@ -1148,27 +1148,51 @@ audioCtx=new (window.AudioContext||window.webkitAudioContext)();
 
 }
 
-const o=audioCtx.createOscillator();
 
-const g=audioCtx.createGain();
+const dur=.035;
 
-o.type="sine";
+const bufferSize=Math.floor(audioCtx.sampleRate*dur);
 
-o.frequency.setValueAtTime(750,audioCtx.currentTime);
+const buffer=audioCtx.createBuffer(1,bufferSize,audioCtx.sampleRate);
 
-o.frequency.exponentialRampToValueAtTime(180,audioCtx.currentTime+.18);
+const data=buffer.getChannelData(0);
 
-g.gain.setValueAtTime(.35,audioCtx.currentTime);
+for(let i=0;i<bufferSize;i++){
 
-g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.18);
+data[i]=(Math.random()*2-1)*Math.pow(1-i/bufferSize,2);
 
-o.connect(g);
+}
 
-g.connect(audioCtx.destination);
 
-o.start();
+const noise=audioCtx.createBufferSource();
 
-o.stop(audioCtx.currentTime+.18);
+noise.buffer=buffer;
+
+
+const filter=audioCtx.createBiquadFilter();
+
+filter.type="bandpass";
+
+filter.frequency.value=2800;
+
+filter.Q.value=.7;
+
+
+const gain=audioCtx.createGain();
+
+gain.gain.setValueAtTime(.6,audioCtx.currentTime);
+
+gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+dur);
+
+
+noise.connect(filter);
+
+filter.connect(gain);
+
+gain.connect(audioCtx.destination);
+
+
+noise.start();
 
 }catch(e){}
 
